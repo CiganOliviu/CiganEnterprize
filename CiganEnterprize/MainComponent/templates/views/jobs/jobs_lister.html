@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jobs</title>
+  </head>
+  <body>
+    <h1>Jobs</h1>
+    {% for job in jobs_result %}
+      <a href="{% url 'job_detail' job.job_slug %}">{{ job.post }}</a>
+      <div>&nbsp;</div>
+    {% endfor %}
+  </body>
+</html>
