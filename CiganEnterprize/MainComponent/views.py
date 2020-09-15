@@ -86,7 +86,7 @@ class JobAppliance(generic.TemplateView):
 
             post = form.save(commit = False)
 
-            if self._validate_save():
+            if self._validate_save(JobsAppliance, post):
                 form.save()
 
         return render(request, self.final_template_name)
