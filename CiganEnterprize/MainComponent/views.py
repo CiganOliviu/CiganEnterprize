@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import reverse
 from django.views import generic
-from django.views.generic import edit
-from .models import Studio, AvaibleJob
+
+from .models import Studio, JobsAppliance, AvaibleJob
 from .forms import ApplianceForm
 
 def index(request):
@@ -54,3 +54,39 @@ class JobDetail(generic.DetailView):
 
     slug_field = 'job_slug'
     slug_url_kwarg = 'job_slug'
+
+class JobAppliance(generic.TemplateView):
+
+    template_name = 'views/carrers/job_appliance.html'
+    final_template_name = 'views/carrers/job_appliance_send.html'
+
+    def get(self, request):
+
+        form = ApplianceForm()
+        post = form.save(commit = False)
+
+        args = { 'form' : form }
+
+        return render(request, self.template_name, args)
+
+    def _validate_save(self, database_name, database_object):
+
+        if not JobsAppliance.objects.filter(first_name = post.first_name, last_name = post.last_name,
+            email = post.email, years_of_experience = post.years_of_experience,
+            description_of_skills = post.description_of_skills, carrer = post.carrer).exists():
+            return True
+
+        return False
+
+    def post(self, request):
+
+        form = ApplianceForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            post = form.save(commit = False)
+
+            if _validate_save():
+                form.save()
+
+        return render(request, self.final_template_name)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AvaibleJob, Studio, JobAppliance
+from .models import AvaibleJob, Studio, JobsAppliance
 
 class StudioAdmin(admin.ModelAdmin):
     list_display = ('city', 'address', 'country')
@@ -9,10 +9,10 @@ class AvaibleJobAdmin(admin.ModelAdmin):
     list_display = ('post', 'location')
     prepopulated_fields = {'job_slug': ('post',)}
 
-class JobApplianceAdmin(admin.ModelAdmin):
+class JobsApplianceAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'carrer', 'date')
 
 
 admin.site.register(Studio, StudioAdmin)
 admin.site.register(AvaibleJob, AvaibleJobAdmin)
-admin.site.register(JobAppliance, JobApplianceAdmin)
+admin.site.register(JobsAppliance, JobsApplianceAdmin)

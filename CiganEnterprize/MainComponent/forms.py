@@ -1,5 +1,5 @@
 from django import forms
-from MainComponent.models import JobAppliance, AvaibleJob
+from MainComponent.models import JobsAppliance, AvaibleJob
 
 class ApplianceForm(forms.ModelForm):
 
@@ -12,7 +12,7 @@ class ApplianceForm(forms.ModelForm):
     carrer = forms.ModelChoiceField(queryset = AvaibleJob.objects.all())
 
     class Meta:
-        model = JobAppliance
+        model = JobsAppliance
 
         fields = (
             'first_name',

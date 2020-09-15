@@ -30,7 +30,7 @@ class AvaibleJob(models.Model):
 
         return str(self.post) + " " + str(self.location)
 
-class JobAppliance(models.Model):
+class JobsAppliance(models.Model):
 
     first_name = models.CharField(max_length = 100, default = "")
     last_name = models.CharField(max_length = 100, default = "")
