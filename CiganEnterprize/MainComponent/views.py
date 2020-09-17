@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import reverse
 from django.views import generic
+from django.db.models import Q
 
 from .models import Studio, JobsAppliance, AvaibleJob
 from .forms import ApplianceForm
@@ -16,10 +17,12 @@ def studio_lister(request):
     template_name = 'views/studios/studios_lister.html'
 
     studios_result = Studio.objects.all()
+    jobs_result = AvaibleJob.objects.all()
 
     context = {
 
         'studios_result' : studios_result,
+        'jobs_result' : jobs_result,
     }
 
     return render(request, template_name, context)
@@ -32,6 +35,24 @@ class StudioDetail(generic.DetailView):
 
     slug_field = 'studio_slug'
     slug_url_kwarg = 'studio_slug'
+
+def search_jobs_view(request):
+
+    template_name = 'views/jobs/jobs_results.html'
+
+    query = request.GET.get('q')
+
+    if query:
+        results = AvaibleJob.objects.filter(Q(post__icontains = query) | Q(location__city__icontains = query))
+    else:
+        return redirect('/jobs')
+
+    context = {
+
+        'results' : results,
+    }
+
+    return render(request, template_name, context)
 
 def jobs_lister(request):
 
@@ -86,7 +107,7 @@ class JobAppliance(generic.TemplateView):
 
             post = form.save(commit = False)
 
-            if _validate_save():
+            if self._validate_save(JobsAppliance, post):
                 form.save()
 
         return render(request, self.final_template_name)

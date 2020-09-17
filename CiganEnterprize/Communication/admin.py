@@ -2,10 +2,10 @@ from django.contrib import admin
 from .models import NewsLetter, Contact
 
 class NewsletterAdmin(admin.ModelAdmin):
-    display_list = ('email', 'date')
+    list_display = ('email', 'date')
 
 class ContactAdmin(admin.ModelAdmin):
-    display_list = ('last_name', 'title')
+    list_display = ('last_name', 'title', 'email', 'sent_date')
 
 admin.site.register(NewsLetter, NewsletterAdmin)
 admin.site.register(Contact, ContactAdmin)
