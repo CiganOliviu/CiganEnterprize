@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'MainComponent',
     'Blog',
     'Communication',
+    'Events',
 ]
 
 MIDDLEWARE = [

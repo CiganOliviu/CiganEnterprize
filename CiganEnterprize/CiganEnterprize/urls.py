@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('MainComponent.urls')),
     path('', include('Blog.urls')),
     path('', include('Communication.urls')),
+    path('', include("Events.urls")),
 ]

@@ -3,12 +3,17 @@ from django.shortcuts import reverse
 from django.views import generic
 from django.db.models import Q
 
+from . import events_management
 from .models import Studio, JobsAppliance, AvaibleJob
+from Events.models import PastEvent, SponsorEvent, HostEvent
 from .forms import ApplianceForm
 
 def index(request):
 
     template_name = 'views/index.html'
+
+    events_management.fetch_host_event_database()
+    events_management.fetch_sponsor_event_database()
 
     return render(request, template_name)
 
