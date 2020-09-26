@@ -1,0 +1,21 @@
+@media (max-width: 760px) {
+  body {
+    font-size: 18px;
+  }
+
+  .presentation-image h1 {
+    margin-top: 10em;
+    padding: 5%;
+    font-size: 35px;
+  }
+
+  .test-content {
+    margin-top: 15%;
+  }
+
+  .topnav a {
+    margin-left: 1%;
+  }
+}
+
+/*# sourceMappingURL=mobile_adjust.css.map */
