@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('Blog.urls')),
     path('', include('Communication.urls')),
     path('', include("Events.urls")),
+    path('', include("Careers.urls")),
 ]

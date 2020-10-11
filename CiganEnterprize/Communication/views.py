@@ -3,6 +3,7 @@ from django.views import generic
 from .models import NewsLetter, Contact
 from .forms import NewsLetterForm, ContactForm
 
+
 class NewsletterView(generic.TemplateView):
 
     template_name = 'views/newsletter/newsletter.html'
@@ -11,15 +12,15 @@ class NewsletterView(generic.TemplateView):
     def get(self, request):
 
         form = NewsLetterForm()
-        post = form.save(commit = False)
+        post = form.save(commit=False)
 
-        args = { 'form' : form }
+        args = {'form': form}
 
         return render(request, self.template_name, args)
 
     def _validate_save(self, database_name, database_object):
 
-        if not database_name.objects.filter(email = database_object.email).exists():
+        if not database_name.objects.filter(email=database_object.email).exists():
             return True
 
         return False
@@ -30,12 +31,13 @@ class NewsletterView(generic.TemplateView):
 
         if form.is_valid():
 
-            post = form.save(commit = False)
+            post = form.save(commit=False)
 
             if self._validate_save(NewsLetter, post):
                 form.save()
 
         return render(request, self.final_template_name)
+
 
 class FormularContact(generic.TemplateView):
 
@@ -45,15 +47,15 @@ class FormularContact(generic.TemplateView):
     def get(self, request):
 
         form = ContactForm()
-        post = form.save(commit = False)
+        post = form.save(commit=False)
 
-        args = { 'form' : form }
+        args = {'form': form}
 
         return render(request, self.template_name, args)
 
     def _validate_save(self, database_name, database_object):
 
-        if not database_name.objects.filter(title = database_object.title, message = database_object.message).exists():
+        if not database_name.objects.filter(title=database_object.title, message=database_object.message).exists():
             return True
 
         return False
@@ -64,7 +66,7 @@ class FormularContact(generic.TemplateView):
 
         if form.is_valid():
 
-            post = form.save(commit = False)
+            post = form.save(commit=False)
 
             if self._validate_save(Contact, post):
                 form.save()

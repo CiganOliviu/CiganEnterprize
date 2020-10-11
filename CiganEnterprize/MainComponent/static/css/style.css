@@ -1,7 +1,9 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 body {
   background: #f2f2f2;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 p {
@@ -19,6 +21,10 @@ a:hover {
 
 .white-background {
   background: #ffffff;
+}
+
+.gray-background {
+  background: #f2f2f2;
 }
 
 #white-wallpaper-color {
@@ -76,6 +82,28 @@ a:hover {
 #button-to-top.show {
   opacity: 0.7;
   visibility: visible;
+}
+
+.header li ul {
+  display: none;
+  position: absolute;
+}
+
+.header li ul {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+  transition-max-height: 0 0.4s;
+  transition-opacity: 0.4s 0;
+}
+
+.header li:hover ul {
+  max-height: 200px;
+  opacity: 1;
+  transition-max-height: 0;
+  transition-opacity: 0.4s 0;
 }
 
 .header {
@@ -234,7 +262,6 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  background-repeat: no-repeat;
 }
 @media (min-width: 768px) {
   .presentation-image {
@@ -331,6 +358,10 @@ a:hover {
   padding: 3%;
 }
 
+.studios-presentation i {
+  color: #4584b6;
+}
+
 .city img {
   width: 100%;
   height: auto;
@@ -387,7 +418,7 @@ a:hover {
   transition: all 500ms ease-out;
 }
 
-.carrers {
+.careers {
   background-color: #ffffff;
   padding: 3%;
   width: 90%;
@@ -397,21 +428,186 @@ a:hover {
   transition: all 300ms ease-in-out;
 }
 
-.carrers:hover {
+.careers:hover {
   box-shadow: 5px 6px 8px 6px #888888;
   transition: all 300ms ease-in-out;
 }
-.carrers:hover h1 {
+.careers:hover h1 {
   color: #4584b6;
 }
 
-.carrers h1 {
+.careers h1 {
   font-size: 30px;
   transition: all 300ms ease-in-out;
 }
 
-.carrers i {
+.careers i {
   color: #4584b6;
+}
+
+.info-message {
+  padding: 3%;
+}
+
+.studios-presentation img {
+  height: auto;
+  width: 100%;
+}
+
+.studios-wallpaper {
+  background: url("../imgs/studios_wallpaper.jpg");
+  color: #ffffff;
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+}
+@media (min-width: 768px) {
+  .studios-wallpaper {
+    min-height: 20vw;
+  }
+}
+@media (min-width: 1200px) {
+  .studios-wallpaper {
+    min-height: 400px;
+  }
+}
+
+.studios-wallpaper h1 {
+  font-family: "Roboto", sans-serif;
+  padding: 5%;
+  margin-top: 5em;
+  font-size: 60px;
+  color: #ffffff;
+  background: #000000;
+  opacity: 0.7;
+}
+
+.tz-gallery {
+  overflow: hidden;
+}
+
+.tz-gallery .row > div {
+  padding: 2px;
+}
+
+#lightbox-line-one img {
+  height: 380px;
+}
+
+.tz-gallery .lightbox img {
+  width: 100%;
+  border-radius: 0;
+}
+
+.tz-gallery .lightbox:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -13px;
+  margin-left: -13px;
+  opacity: 0;
+  color: #fff;
+  font-size: 26px;
+  font-family: "Glyphicons Halflings";
+  content: "";
+  pointer-events: none;
+  z-index: 9000;
+  transition: 0.4s;
+}
+
+.tz-gallery .lightbox:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(46, 132, 206, 0.7);
+  content: "";
+  transition: 0.4s;
+}
+
+.tz-gallery .lightbox:hover:after,
+.tz-gallery .lightbox:hover:before {
+  opacity: 1;
+}
+
+.baguetteBox-button {
+  background-color: transparent !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+}
+.manager {
+  margin-top: 6%;
+}
+
+.manager img {
+  width: 100%;
+  height: auto;
+}
+
+.jobs-wallpaper {
+  color: #ffffff;
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+}
+@media (min-width: 768px) {
+  .jobs-wallpaper {
+    min-height: 20vw;
+  }
+}
+@media (min-width: 1200px) {
+  .jobs-wallpaper {
+    min-height: 400px;
+  }
+}
+
+.jobs-wallpaper h1 {
+  font-family: "Roboto", sans-serif;
+  padding: 5%;
+  margin-top: 5em;
+  font-size: 60px;
+  color: #ffffff;
+  background: #000000;
+  opacity: 0.7;
+}
+
+.internship-wallpaper {
+  color: #ffffff;
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+}
+@media (min-width: 768px) {
+  .internship-wallpaper {
+    min-height: 20vw;
+  }
+}
+@media (min-width: 1200px) {
+  .internship-wallpaper {
+    min-height: 400px;
+  }
+}
+
+.internship-wallpaper h1 {
+  font-family: "Roboto", sans-serif;
+  padding: 5%;
+  margin-top: 5em;
+  font-size: 60px;
+  color: #ffffff;
+  background: #000000;
+  opacity: 0.7;
 }
 
 #footer {
