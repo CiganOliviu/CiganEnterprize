@@ -26,7 +26,9 @@ def save_project_from_active_projects_in_finished_projects(user):
                                                    type=project.type,
                                                    date=project.date,
                                                    price=project.price)
-
+                
+                save_to_database.save()
+                
                 query_planned_projects = PlannedProject.objects.filter(user=project.user,
                                                                        project_name=project.project_name,
                                                                        project_description=project.project_description,
@@ -51,7 +53,6 @@ def save_project_from_active_projects_in_finished_projects(user):
 
                 query_active_working.delete()
 
-                save_to_database.save()
 
                 query_requested_projects = ProjectsRequest.objects.filter(user=project.user,
                                                                           project_name=project.project_name,
@@ -59,7 +60,6 @@ def save_project_from_active_projects_in_finished_projects(user):
                                                                           list_of_functionalities=project.list_of_functionalities,
                                                                           type=project.type)
 
-                print(query_requested_projects)
 
                 query_requested_projects.delete()
 
