@@ -54,7 +54,7 @@ class JobsAppliance(models.Model):
     last_name = models.CharField(max_length=100, default="")
     email = models.EmailField(default="")
     years_of_experience = models.PositiveIntegerField(default=0)
-    curriculum_vitae = models.FileField(upload_to="curriculum_vitae/", default='default.pdf')
+    curriculum_vitae = models.FileField("upload_tcurriculum_vitae/", default='default.pdf')
     description_of_skills = models.TextField(default="")
     career = models.ForeignKey(AvailableJob, on_delete=models.CASCADE, default=1)
     accepted = models.BooleanField(default=False)
